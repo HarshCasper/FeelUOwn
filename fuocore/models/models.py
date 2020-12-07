@@ -172,6 +172,16 @@ class SongModel(BaseModel, MultiQualityMixin):
         return all([other.source == self.source,
                     other.identifier == self.identifier])
 
+    def list_similar_songs(self):
+        """List similar songs
+
+        Usually, this method triggers blocking IO operation. You'd better run
+        this in a thread pool.
+
+        :return: list of :class:`.SongModel`
+        :rtype: list
+        """
+
 
 class PlaylistModel(BaseModel):
     class Meta:
